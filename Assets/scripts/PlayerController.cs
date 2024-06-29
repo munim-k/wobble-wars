@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public float speed = 5.0f;
     public float rotationSpeed = 700.0f;
@@ -20,8 +21,9 @@ public class PlayerController : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (!IsOwner) return;
         Vector3 movement = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
         movement = Vector3.ClampMagnitude(movement, 1.0f); // Normalize to prevent faster diagonal movement
 

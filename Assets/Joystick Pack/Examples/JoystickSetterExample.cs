@@ -15,13 +15,13 @@ public class JoystickSetterExample : MonoBehaviour
         switch(index)
         {
             case 0:
-                variableJoystick.SetMode(JoystickType.Fixed);
+                variableJoystick.SetMode(JoystickType.Dynamic);
                 break;
             case 1:
                 variableJoystick.SetMode(JoystickType.Floating);
                 break;
             case 2:
-                variableJoystick.SetMode(JoystickType.Dynamic);
+                variableJoystick.SetMode(JoystickType.Fixed);
                 break;
             default:
                 break;
