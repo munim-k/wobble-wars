@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2925060242588024775
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,7 +1170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8277994750625815152
 Transform:
   m_ObjectHideFlags: 0
@@ -1292,6 +1292,7 @@ GameObject:
   - component: {fileID: 700401576576131250}
   - component: {fileID: 7170651769153717545}
   - component: {fileID: 2269884969383528232}
+  - component: {fileID: 1267391557748445157}
   m_Layer: 0
   m_Name: stickman
   m_TagString: Untagged
@@ -1333,7 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1198868686
+  GlobalObjectIdHash: 2196427924
   InScenePlacedSourceGlobalObjectIdHash: 432450680
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -1462,6 +1463,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 1663531683647445329}
+--- !u!114 &1267391557748445157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185614909944699174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883405aae6915f707b0341629c3b03c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCameraPrefab: {fileID: 5611824732349862072, guid: 4acf6787958af893c99517b04ca8ff00,
+    type: 3}
 --- !u!1 &7349769249023083344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5284271614351904091
 Transform:
   m_ObjectHideFlags: 0
@@ -1727,7 +1742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1142514794095725856
 Transform:
   m_ObjectHideFlags: 0
