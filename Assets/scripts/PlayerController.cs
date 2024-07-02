@@ -1,6 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerController : NetworkBehaviour
 {
     public float speed = 5.0f;
@@ -9,16 +9,22 @@ public class PlayerController : NetworkBehaviour
     private Rigidbody rb;
     private Animator animator;
     
+    public GameObject GrenadeSpawner;
     public VariableJoystick variableJoystick;
-    
+    public Button BombButton;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         variableJoystick = GameObject.FindWithTag("joystick").GetComponent<VariableJoystick>();
+        BombButton = GameObject.FindWithTag("GameUI").GetComponentInChildren<Button>();
         // Ensure Rigidbody settings for proper movement
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
+        if(BombButton != null)
+            Debug.Log("Button Found");
+
+        BombButton.onClick.AddListener(TaskOnClick);
     }
 
     void FixedUpdate()
@@ -43,5 +49,17 @@ public class PlayerController : NetworkBehaviour
         // Move the player
         Vector3 move = movement * speed * Time.deltaTime;
         rb.MovePosition(transform.position + move);
+    }
+
+    void TaskOnClick()
+    {
+        Debug.Log("in listener");
+        ThrowBomb();
+    }
+    public void ThrowBomb()
+    { 
+        GrenadeSpawner.SetActive(true);
+        animator.SetTrigger("Throw");
+       // animator.ResetTrigger("Throw");
     }
 }
