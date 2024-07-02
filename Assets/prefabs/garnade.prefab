@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 397167777409245697}
   - component: {fileID: 5213507111619929553}
-  - component: {fileID: 5470130117925860466}
   - component: {fileID: 6118303219298339635}
+  - component: {fileID: 9004195296019757254}
   m_Layer: 0
   m_Name: garnade
   m_TagString: Untagged
@@ -63,29 +63,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &5470130117925860466
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065335859400014011}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.63
-  m_Height: 2.21
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!114 &6118303219298339635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,8 +79,29 @@ MonoBehaviour:
   explodeDelay: 2
   explodeRadius: 15
   explosionForce: 15
-  explodeEffect: {fileID: 8228753794921253827, guid: fa7beeb776db7bf2da388443ce3cdadd,
+  explodeEffect: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
     type: 3}
+--- !u!135 &9004195296019757254
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065335859400014011}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.65
+  m_Center: {x: 0, y: 0.58, z: 0}
 --- !u!1 &1465266222899844315
 GameObject:
   m_ObjectHideFlags: 0

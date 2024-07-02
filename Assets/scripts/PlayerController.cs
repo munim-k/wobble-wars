@@ -58,6 +58,7 @@ public class PlayerController : NetworkBehaviour
     }
     public void ThrowBomb()
     { 
+        if(!IsOwner) return;
         GrenadeSpawner.SetActive(true);
         animator.SetTrigger("Throw");
        // animator.ResetTrigger("Throw");

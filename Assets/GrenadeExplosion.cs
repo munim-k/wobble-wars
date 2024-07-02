@@ -41,7 +41,8 @@ public class GrenadeExplosion : MonoBehaviour
         //     if (character != null) character.TakeDamage(damage);
         // }
 
-        Instantiate(explodeEffect, transform.position, Quaternion.identity);
+        GameObject EffectInstance = Instantiate(explodeEffect, transform.position, Quaternion.identity);
+        Destroy(EffectInstance,2.0f);
         Destroy(gameObject);
     }
 }
