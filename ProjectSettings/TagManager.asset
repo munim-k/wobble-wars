@@ -6,6 +6,9 @@ TagManager:
   tags:
   - joystick
   - GameUI
+  - KickButton
+  - BombButton
+  - Ball
   layers:
   - Default
   - TransparentFX

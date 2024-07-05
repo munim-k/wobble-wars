@@ -1,8 +1,9 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class GrenadeExplosion : MonoBehaviour
+public class GrenadeExplosion : NetworkBehaviour
 {
-   public int damage = 20;
+    public int damage = 20;
     public float explodeDelay = 2f;
     public float explodeRadius = 15f;
     public float explosionForce = 15f;
@@ -17,12 +18,6 @@ public class GrenadeExplosion : MonoBehaviour
         Invoke("Explode", explodeDelay);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void EnableCollider()
     {
         GetComponent<SphereCollider>().isTrigger = false;
@@ -30,19 +25,34 @@ public class GrenadeExplosion : MonoBehaviour
 
     private void Explode()
     {
-        Collider[] collidersHit = Physics.OverlapSphere(transform.position, explodeRadius);
+        if (IsServer)
+        {
+            Collider[] collidersHit = Physics.OverlapSphere(transform.position, explodeRadius);
 
-        // foreach (Collider collider in collidersHit)
-        // {
-        //     Rigidbody rigid = collider.GetComponent<Rigidbody>();
-        //     if(rigid != null) rigid.AddExplosionForce(explosionForce, transform.position, explodeRadius, 1f, ForceMode.Impulse);
+            // foreach (Collider collider in collidersHit)
+            // {
+            //     Rigidbody rigid = collider.GetComponent<Rigidbody>();
+            //     if (rigid != null)
+            //         rigid.AddExplosionForce(explosionForce, transform.position, explodeRadius, 1f, ForceMode.Impulse);
 
-        //     Character character = collider.GetComponent<Character>();
-        //     if (character != null) character.TakeDamage(damage);
-        // }
+            //     Character character = collider.GetComponent<Character>();
+            //     if (character != null)
+            //         character.TakeDamage(damage);
+            // }
 
-        GameObject EffectInstance = Instantiate(explodeEffect, transform.position, Quaternion.identity);
-        Destroy(EffectInstance,2.0f);
-        Destroy(gameObject);
+            
+            // Notify clients about the explosion
+            ExplodeClientRpc();
+
+            // Destroy the grenade on the server
+            Destroy(gameObject);
+        }
+    }
+
+    [ClientRpc]
+    private void ExplodeClientRpc()
+    {
+        GameObject effects = Instantiate(explodeEffect, transform.position, Quaternion.identity);
+        Destroy(effects,2.0f);
     }
 }

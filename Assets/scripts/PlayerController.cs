@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerController : NetworkBehaviour
@@ -12,19 +13,20 @@ public class PlayerController : NetworkBehaviour
     public GameObject GrenadeSpawner;
     public VariableJoystick variableJoystick;
     public Button BombButton;
+    public Button KickButton;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         variableJoystick = GameObject.FindWithTag("joystick").GetComponent<VariableJoystick>();
-        BombButton = GameObject.FindWithTag("GameUI").GetComponentInChildren<Button>();
+        BombButton = GameObject.FindWithTag("BombButton").GetComponentInChildren<Button>();
+//        KickButton = GameObject.FindGameObjectWithTag("KickButton").GetComponentInChildren<Button>();
         // Ensure Rigidbody settings for proper movement
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
-        if(BombButton != null)
-            Debug.Log("Button Found");
 
-        BombButton.onClick.AddListener(TaskOnClick);
+        BombButton.onClick.AddListener(BombClick);
+//        KickButton.onClick.AddListener(KickClick);
     }
 
     void FixedUpdate()
@@ -50,10 +52,12 @@ public class PlayerController : NetworkBehaviour
         Vector3 move = movement * speed * Time.deltaTime;
         rb.MovePosition(transform.position + move);
     }
-
-    void TaskOnClick()
+    public void BallKickAnimation()
     {
-        Debug.Log("in listener");
+        animator.SetTrigger("Kick");
+    }
+    void BombClick()
+    {
         ThrowBomb();
     }
     public void ThrowBomb()
@@ -62,5 +66,14 @@ public class PlayerController : NetworkBehaviour
         GrenadeSpawner.SetActive(true);
         animator.SetTrigger("Throw");
        // animator.ResetTrigger("Throw");
+    }
+    void KickClick()
+    {
+        Kick();
+    }
+    public void Kick()
+    {
+        if(!IsOwner) return;
+        animator.SetTrigger("Kick");
     }
 }
