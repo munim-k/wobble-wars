@@ -1479,6 +1479,37 @@ Transform:
   - {fileID: 397167777409245697}
   m_Father: {fileID: 2556234382681038602}
   m_LocalEulerAnglesHint: {x: -4.419561, y: 12.767247, z: 15.754014}
+--- !u!1 &7081344071130222960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 338014654047561025}
+  m_Layer: 0
+  m_Name: BallPossessionPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &338014654047561025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081344071130222960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.665}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9100992584825340981}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7185614909944699174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1527,7 @@ GameObject:
   - component: {fileID: 7170651769153717545}
   - component: {fileID: 2269884969383528232}
   - component: {fileID: 1267391557748445157}
+  - component: {fileID: 6291877007018920658}
   m_Layer: 0
   m_Name: stickman
   m_TagString: Player
@@ -1523,6 +1555,7 @@ Transform:
   - {fileID: 5284271614351904091}
   - {fileID: 8277994750625815152}
   - {fileID: 2925060242588024775}
+  - {fileID: 338014654047561025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5266865570365522553
@@ -1563,7 +1596,6 @@ MonoBehaviour:
   GrenadeSpawner: {fileID: 9205035568138762767}
   variableJoystick: {fileID: 0}
   BombButton: {fileID: 0}
-  KickButton: {fileID: 0}
 --- !u!95 &1663531683647445329
 Animator:
   serializedVersion: 5
@@ -1711,6 +1743,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCameraPrefab: {fileID: 5611824732349862072, guid: 4acf6787958af893c99517b04ca8ff00,
     type: 3}
+--- !u!114 &6291877007018920658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185614909944699174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1183846d6066f4beaa9d87aa090803dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 7639169644777723803, guid: 2af805a99082a037bb17c964e4478a66, type: 3}
+  ballPossessionPosition: {fileID: 338014654047561025}
+  football: {fileID: 0}
+  hasBall: 0
 --- !u!1 &7349769249023083344
 GameObject:
   m_ObjectHideFlags: 0

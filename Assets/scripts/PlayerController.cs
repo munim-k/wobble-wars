@@ -13,20 +13,19 @@ public class PlayerController : NetworkBehaviour
     public GameObject GrenadeSpawner;
     public VariableJoystick variableJoystick;
     public Button BombButton;
-    public Button KickButton;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         variableJoystick = GameObject.FindWithTag("joystick").GetComponent<VariableJoystick>();
         BombButton = GameObject.FindWithTag("BombButton").GetComponentInChildren<Button>();
-//        KickButton = GameObject.FindGameObjectWithTag("KickButton").GetComponentInChildren<Button>();
-        // Ensure Rigidbody settings for proper movement
+//        
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
 
         BombButton.onClick.AddListener(BombClick);
-//        KickButton.onClick.AddListener(KickClick);
+//        
     }
 
     void FixedUpdate()
@@ -54,6 +53,7 @@ public class PlayerController : NetworkBehaviour
     }
     public void BallKickAnimation()
     {
+        Debug.Log("Starting Kick trigger");
         animator.SetTrigger("Kick");
     }
     void BombClick()
@@ -66,14 +66,5 @@ public class PlayerController : NetworkBehaviour
         GrenadeSpawner.SetActive(true);
         animator.SetTrigger("Throw");
        // animator.ResetTrigger("Throw");
-    }
-    void KickClick()
-    {
-        Kick();
-    }
-    public void Kick()
-    {
-        if(!IsOwner) return;
-        animator.SetTrigger("Kick");
     }
 }
