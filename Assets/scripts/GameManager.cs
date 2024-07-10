@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : NetworkBehaviour
 {
     public GameObject footballPrefab;
+    public GameObject KickButton;
 
     public override void OnNetworkSpawn()
     {
@@ -12,5 +13,6 @@ public class GameManager : NetworkBehaviour
             GameObject football = Instantiate(footballPrefab, Vector3.zero, Quaternion.identity);
             football.GetComponent<NetworkObject>().Spawn();
         }
+        KickButton.SetActive(true);
     }
 }
